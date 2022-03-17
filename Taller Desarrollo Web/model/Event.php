@@ -2,12 +2,27 @@
 
 class Event
 {
-
+    private $name;
     private $position;
 
     /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @param $position
-     * @param bool $type
      */
     public function __construct($position)
     {

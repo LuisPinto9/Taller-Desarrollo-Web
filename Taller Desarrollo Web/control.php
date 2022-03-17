@@ -17,11 +17,9 @@ $out->numTwo = $number->getNumTwo();
 
 echo json_encode( $number->calcMCD() );*/
 
-//$_GET me devuelve lo que haya en la etiqueta seleccionada
 $option = $_GET['option'];
-//porque igual a uno?
 if( $option == 1 ){
-    //cargamos en la varable file los departamentos
+
     $file = "./source/participants.json";
     /**La función fopen() sirve para abrir ficheros (archivos)
      * fopen(fichero,modoDeApertura)
@@ -42,7 +40,8 @@ if( $option == 1 ){
      * echo: imprimir variable
      */
     echo $datos;
-}else{
+}
+else{
     $file = "./resources/files/towns.json";
     $fp = fopen($file, "r");
     $datos = fread($fp, filesize($file));
