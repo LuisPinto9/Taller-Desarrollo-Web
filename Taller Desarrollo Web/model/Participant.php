@@ -3,7 +3,10 @@
 class Participant
 {
 
+    private $name;
+    private $id;
     private $discipline;
+    private $discipleType = false;
     private $events;
 
     public function __construct()
@@ -11,6 +14,53 @@ class Participant
         $this->events = array();
     }
 
+    /**
+     * @return bool
+     */
+    public function isDiscipleType()
+    {
+        return $this->discipleType;
+    }
+
+    /**
+     * @param bool $discipleType
+     */
+    public function setDiscipleType($discipleType)
+    {
+        $this->discipleType = $discipleType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed
