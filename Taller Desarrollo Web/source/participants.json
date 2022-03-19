@@ -3,9 +3,8 @@
   "id": "12345",
   "discipline": "Futbol",
   "disciplineType": true,
-  "events": [
-    {
-      "name": "Torneo Interescuelas",
-      "position": 2
-    }
-]}
+  "events": {
+    "name": "Torneo Interescuelas",
+    "position": 2
+  }
+}

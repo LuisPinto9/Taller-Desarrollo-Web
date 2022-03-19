@@ -6,13 +6,25 @@ class Participant
     private $name;
     private $id;
     private $discipline;
-    private $discipleType = false;
+    private $discipleType;
     private $events;
 
-    public function __construct()
+    /**
+     * @param $name
+     * @param $id
+     * @param $discipline
+     * @param $discipleType
+     * @param array $events
+     */
+    public function __construct($name, $id, $discipline, $discipleType, array $events)
     {
-        $this->events = array();
+        $this->name = $name;
+        $this->id = $id;
+        $this->discipline = $discipline;
+        $this->discipleType = $discipleType;
+        $this->events = $events;
     }
+
 
     /**
      * @return bool
@@ -29,6 +41,7 @@ class Participant
     {
         $this->discipleType = $discipleType;
     }
+
 
     /**
      * @return mixed
@@ -94,8 +107,8 @@ class Participant
         $this->events = $events;
     }
 
-    public function addEvent($event)
+    /*public function addEvent($event)
     {
         array_unshift($this->events, $event);
-    }
+    }*/
 }
