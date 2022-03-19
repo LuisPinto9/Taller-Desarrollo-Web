@@ -1,5 +1,3 @@
-begin()
-
 function begin() {
 
     const xhr = new XMLHttpRequest();
