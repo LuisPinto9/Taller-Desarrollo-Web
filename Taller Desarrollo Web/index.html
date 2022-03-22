@@ -10,26 +10,154 @@
 </head>
 <body class="container">
 
-<div class="m-5">
+<div class="card m-5">
 
-    <div>
-        <h1 style="text-align: center">Buenas, rellene los campos para buscar una afiliado</h1>
+    <div class="card-header" style="text-align: center">
+        Listar Afiliados
     </div>
 
-    <div class="mb-3">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" placeholder="Nombre" id="name">
+    <div class="m-5">
+
+        <div>
+            <h1 style="text-align: center">Buenas, oprima el boton para listar los afiliados</h1>
+        </div>
+
+
+        <div class="row">
+            <div class="col" style="text-align: center">
+                <button type="button" class="btn btn-primary" id="listButton">Listar</button>
+            </div>
+        </div>
+
+        <table class="table table-striped" id="tableList">
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Tipo de Disciplina</th>
+                <th scope="col">Evento</th>
+                <th scope="col">Posicion del evento</th>
+            </tr>
+            </thead>
+            <tbody id="body">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card m-5">
+
+    <div class="card-header" style="text-align: center">
+        Buscar Afiliados
     </div>
 
-    <div class="mb-3">
-        <label for="id">Identificación</label>
-        <input type="text" class="form-control" placeholder="Identificación" id="id">
+    <div class="m-5">
+
+        <div>
+            <h1 style="text-align: center">Buenas, rellene los campos para buscar un afiliado</h1>
+        </div>
+
+        <div class="row m-3">
+            <div class="col">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre" id="name">
+            </div>
+            <div class="col">
+                <label for="id">Identificación</label>
+                <input type="text" class="form-control" placeholder="Identificación" id="id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="text-align: center">
+                <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" style="text-align: center">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card m-5">
+
+    <div class="card-header" style="text-align: center">
+        Agregar Participante
     </div>
 
-    <div class="mb-3">
-        <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
+    <div class="m-5">
+
+        <div>
+            <h1 style="text-align: center">Buenas, rellene los campos para agregar a un afiliado</h1>
+        </div>
+
+        <div class="mb-3">
+            <label for="createName">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" id="createName">
+        </div>
+
+        <div class="mb-3">
+            <label for="createId">Identificación</label>
+            <input type="text" class="form-control" placeholder="Identificación" id="createId">
+        </div>
+
+        <div class="mb-3">
+            <label for="createDiscipline">Disciplina</label>
+            <input type="text" class="form-control" placeholder="Disciplina" id="createDiscipline">
+        </div>
+
+        <div class="mb-3">
+            <label for="createDisciplineType">Tipo de disciplina</label>
+            <select id="createDisciplineType" class="form-select">
+                <option selected>Seleccione...</option>
+                <option>Grupal</option>
+                <option>Individual</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="createEvent">Eventos</label>
+            <input type="text" class="form-control" placeholder="Nombre del evento" id="createEvent">
+
+            <label for="createEvenPosition">Posición en la que quedó en el evento</label>
+            <input type="text" class="form-control" placeholder="Posicion" id="createEvenPosition">
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" id="addButton">Agregar</button>
+        </div>
+    </div>
+</div>
+
+<div class="card m-5">
+
+    <div class="card-header" style="text-align: center">
+        Eliminar un afiliado
     </div>
 
-    <script src="./script.js"></script>
+    <div class="m-5">
+
+        <div>
+            <h1 style="text-align: center">Buenas, rellene los campos para eliminar un afiliado</h1>
+        </div>
+
+        <div class="mb-3">
+            <label for="deleteId">Identificación</label>
+            <input type="text" class="form-control" placeholder="Identificación" id="deleteId">
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" id="deleteButton">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+
 </body>
 </html>

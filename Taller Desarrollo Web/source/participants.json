@@ -1,10 +1,15 @@
-{
+[{
   "name": "Jose",
   "id": "12345",
   "discipline": "Futbol",
   "disciplineType": true,
-  "events": {
-    "name": "Torneo Interescuelas",
-    "position": 2
-  }
-}
+  "event":  "Torneo Interescuelas",
+  "eventPosition": 2
+}, {
+  "name": "Luis",
+  "id": "123456",
+  "discipline": "Futbol",
+  "disciplineType": true,
+  "event":  "Torneo Interescuelas",
+  "eventPosition": 2
+}]

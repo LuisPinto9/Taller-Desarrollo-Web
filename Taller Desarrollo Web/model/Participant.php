@@ -7,22 +7,25 @@ class Participant
     private $id;
     private $discipline;
     private $discipleType;
-    private $events;
+    private $event;
+    private $eventPosition;
 
     /**
      * @param $name
      * @param $id
      * @param $discipline
      * @param $discipleType
-     * @param array $events
+     * @param $event
+     * @param $eventPosition
      */
-    public function __construct($name, $id, $discipline, $discipleType, array $events)
+    public function __construct($name, $id, $discipline, $discipleType, $event, $eventPosition)
     {
         $this->name = $name;
         $this->id = $id;
         $this->discipline = $discipline;
         $this->discipleType = $discipleType;
-        $this->events = $events;
+        $this->event = $event;
+        $this->eventPosition = $eventPosition;
     }
 
 
@@ -92,19 +95,35 @@ class Participant
     }
 
     /**
-     * @return array
+     * @return mixed
      */
-    public function getEvents()
+    public function getEvent()
     {
-        return $this->events;
+        return $this->event;
     }
 
     /**
-     * @param array $events
+     * @param mixed $event
      */
-    public function setEvents($events)
+    public function setEvent($event)
     {
-        $this->events = $events;
+        $this->event = $event;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEventPosition()
+    {
+        return $this->eventPosition;
+    }
+
+    /**
+     * @param mixed $eventPosition
+     */
+    public function setEventPosition($eventPosition)
+    {
+        $this->eventPosition = $eventPosition;
     }
 
     /*public function addEvent($event)
