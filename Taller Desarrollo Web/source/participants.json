@@ -1,15 +1,42 @@
-[{
-  "name": "Jose",
-  "id": "12345",
-  "discipline": "Futbol",
-  "disciplineType": true,
-  "event":  "Torneo Interescuelas",
-  "eventPosition": 2
-}, {
-  "name": "Luis",
-  "id": "123456",
-  "discipline": "Futbol",
-  "disciplineType": true,
-  "event":  "Torneo Interescuelas",
-  "eventPosition": 2
-}]
+[
+  {
+    "name": "Jose",
+    "id": "12345",
+    "discipline": "Futbol",
+    "disciplineType": true,
+    "event": "Torneo Interescuelas",
+    "eventPosition": 2
+  },
+  {
+    "name": "Luis",
+    "id": "123456",
+    "discipline": "Futbol",
+    "disciplineType": true,
+    "event": "Torneo Interescuelas",
+    "eventPosition": 2
+  },
+  {
+    "name": "zdvzc",
+    "id": "zxv",
+    "discipline": "zxv",
+    "disciplineType": "Grupal",
+    "event": "zxcv",
+    "eventPosition": null
+  },
+  {
+    "name": "rsg",
+    "id": "ssdg",
+    "discipline": "sdgs",
+    "disciplineType": "Individual",
+    "event": "sdg",
+    "eventPosition": null
+  },
+  {
+    "name": "sadsdf",
+    "id": "sdf",
+    "discipline": "sdf",
+    "disciplineType": "Grupal",
+    "event": "sdf",
+    "eventPosition": "sdf"
+  }
+]
