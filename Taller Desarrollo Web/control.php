@@ -62,4 +62,15 @@ if ($option == 1) {
         array_push($newData, $newParticipant);
         file_put_contents('source\participants.json', json_encode($newData));
     }
+}else if($option=4){
+
+    $id = $_GET['id'];
+
+    //$deleteParticipant = array("name" => $_GET['name'], "id" => $_GET['id'], "discipline" => $_GET['discipline'], "disciplineType" => $_GET['disciplineType'], "event" => $_GET['event'], "eventPosition" => $_GET['eventPosition']);
+    if (file_exists('source\participants.json')) {
+        $data = file_get_contents('source\participants.json');
+        $newData = json_decode($data);
+        $newData = array_diff($newData, array($id));
+        file_put_contents('source\participants.json', json_encode($newData));
+    }
 }

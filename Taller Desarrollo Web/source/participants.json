@@ -38,5 +38,21 @@
     "disciplineType": "Grupal",
     "event": "sdf",
     "eventPosition": "sdf"
+  },
+  {
+    "name": "sfdx",
+    "id": "xdfgx",
+    "discipline": "xcbx",
+    "disciplineType": "Individual",
+    "event": "xcb",
+    "eventPosition": "xc"
+  },
+  {
+    "name": "fdsgs",
+    "id": "sdg",
+    "discipline": "sdg",
+    "disciplineType": "Grupal",
+    "event": "sdg",
+    "eventPosition": "sdg"
   }
 ]

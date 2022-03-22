@@ -58,29 +58,34 @@
         <div>
             <h1 style="text-align: center">Buenas, rellene los campos para buscar un afiliado</h1>
         </div>
-
-        <div class="row m-3">
-            <div class="col">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" placeholder="Nombre" id="name">
-            </div>
-            <div class="col">
-                <label for="id">Identificación</label>
-                <input type="text" class="form-control" placeholder="Identificación" id="id">
-            </div>
+        <div class="col">
+            <label for="id">Identificación</label>
+            <input type="text" class="form-control" placeholder="Identificación" id="id">
         </div>
-        <div class="row">
-            <div class="col" style="text-align: center">
-                <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align: center">
+            <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col" style="text-align: center">
+    <div class="row">
+        <table class="table" id="tabla">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">nombre</th>
+                <th scope="col">id</th>
+                <th scope="col">disciplina</th>
+                <th scope="col">tipo de disciplina</th>
+                <th scope="col">evento</th>
+                <th scope="col">posicion del evento</th>
+            </tr>
+            </thead>
+            <tbody>
 
-            </div>
-        </div>
 
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -92,45 +97,48 @@
 
     <div class="m-5">
 
-        <div>
-            <h1 style="text-align: center">Buenas, rellene los campos para agregar a un afiliado</h1>
-        </div>
+        <form id="create">
+            <div>
+                <h1 style="text-align: center">Buenas, rellene los campos para agregar a un afiliado</h1>
+            </div>
 
-        <div class="mb-3">
-            <label for="createName">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre" id="createName">
-        </div>
+            <div class="mb-3">
+                <label for="createName">Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre" id="createName">
+            </div>
 
-        <div class="mb-3">
-            <label for="createId">Identificación</label>
-            <input type="text" class="form-control" placeholder="Identificación" id="createId">
-        </div>
+            <div class="mb-3">
+                <label for="createId">Identificación</label>
+                <input type="text" class="form-control" placeholder="Identificación" id="createId">
+            </div>
 
-        <div class="mb-3">
-            <label for="createDiscipline">Disciplina</label>
-            <input type="text" class="form-control" placeholder="Disciplina" id="createDiscipline">
-        </div>
+            <div class="mb-3">
+                <label for="createDiscipline">Disciplina</label>
+                <input type="text" class="form-control" placeholder="Disciplina" id="createDiscipline">
+            </div>
 
-        <div class="mb-3">
-            <label for="createDisciplineType">Tipo de disciplina</label>
-            <select id="createDisciplineType" class="form-select">
-                <option selected>Seleccione...</option>
-                <option>Grupal</option>
-                <option>Individual</option>
-            </select>
-        </div>
+            <div class="mb-3">
+                <label for="createDisciplineType">Tipo de disciplina</label>
+                <select id="createDisciplineType" class="form-select">
+                    <option selected>Seleccione...</option>
+                    <option>Grupal</option>
+                    <option>Individual</option>
+                </select>
+            </div>
 
-        <div class="mb-3">
-            <label for="createEvent">Eventos</label>
-            <input type="text" class="form-control" placeholder="Nombre del evento" id="createEvent">
+            <div class="mb-3">
+                <label for="createEvent">Eventos</label>
+                <input type="text" class="form-control" placeholder="Nombre del evento" id="createEvent">
 
-            <label for="createEventPosition">Posición en la que quedó en el evento</label>
-            <input type="text" class="form-control" placeholder="Posicion" id="createEventPosition">
-        </div>
+                <label for="createEventPosition">Posición en la que quedó en el evento</label>
+                <input type="text" class="form-control" placeholder="Posicion" id="createEventPosition">
+            </div>
+        </form>
 
         <div class="mb-3">
             <button type="button" class="btn btn-primary" id="addButton">Agregar</button>
         </div>
+
     </div>
 </div>
 
