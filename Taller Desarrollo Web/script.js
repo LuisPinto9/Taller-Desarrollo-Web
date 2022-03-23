@@ -4,7 +4,7 @@ function begin() {
     xhr.open('get', 'control.php?option=1', true)
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            const data = JSON.parse(xhr.responseText)
+            const data = JSON.parse(xhr.response)
             listData(data)
 
         }
@@ -19,7 +19,7 @@ begin()
 
 function listData(mesage) {
 
-    mesage.forEach((participant,) => {
+    mesage.forEach((participant) => {
         console.log(participant.name)
         funtionData(participant.name, participant.id, participant.discipline, participant.disciplineType, participant.event, participant.eventPosition)
     })
@@ -78,7 +78,7 @@ function funtionData(id, name, surname, position, discipline, mode) {
     body.appendChild(row)
 }
 
-document.getElementById("addButton").addEventListener("click", function () {
+document.getElementById("addButton").addEventListener("click", () => {
 
     let name = document.getElementById("createName").value
     let id = document.getElementById("createId").value
@@ -107,9 +107,9 @@ document.getElementById("addButton").addEventListener("click", function () {
 
 })
 
-document.getElementById("deleteButton").addEventListener("click", function () {
+document.getElementById("delete").addEventListener("click",  () => {
 
-    let id = document.getElementById("createId").value
+    let id = document.getElementById("deleteId").value
 
     //let participant = "name=" + name + "&id=" + id + "&discipline=" + discipline + "&disciplineType=" + disciplineType + "&event=" + event + "&eventPosition" + eventPosition
     const xhr4 = new XMLHttpRequest();
@@ -117,16 +117,10 @@ document.getElementById("deleteButton").addEventListener("click", function () {
     xhr4.onreadystatechange = () => {
         if (xhr4.readyState === 4 && xhr4.status === 200) {
 
-            //xhr3.send(participant)
         }
 
     }
     xhr4.send(null)
-    /*$.ajax({
-        url: 'control.php',
-        type: 'POST',
-        data: participant
-    })*/
     //document.getElementById("create").reset();
 
 })
@@ -136,8 +130,8 @@ document.getElementById("searchButton").addEventListener('click',()=>{
     var inicio = document.getElementById('id').value;
 
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET","./source/participants.json",true);
+    var xhr5 = new XMLHttpRequest();
+    xhr5.open("GET","./source/participants.json",true);
 
     var cont=0;
 
@@ -145,9 +139,9 @@ document.getElementById("searchButton").addEventListener('click',()=>{
 
     // if(genero=="Seleccione Genero..." && actor =="Seleccione Actor..." && director == "Seleccione Director..." ){
 
-    xhr.onreadystatechange = ()=>{
-        if( xhr.readyState === 4 && xhr.status === 200 ){
-            const data = JSON.parse( xhr.responseText);
+    xhr5.onreadystatechange = ()=>{
+        if( xhr5.readyState === 4 && xhr5.status === 200 ){
+            const data = JSON.parse( xhr5.responseText);
 
             let tabla  = document.getElementById('tabla');
             let cuerpotabla  = document.createElement('tbody');
@@ -199,7 +193,7 @@ document.getElementById("searchButton").addEventListener('click',()=>{
             tabla.appendChild(cuerpotabla);
         }
     };
-    xhr.send(null);
+    xhr5.send(null);
     //   }
 
 
