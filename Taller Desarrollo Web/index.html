@@ -19,14 +19,7 @@
     <div class="m-5">
 
         <div>
-            <h1 style="text-align: center">Buenas, oprima el boton para listar los afiliados</h1>
-        </div>
-
-
-        <div class="row">
-            <div class="col" style="text-align: center">
-                <button type="button" class="btn btn-primary" id="listButton">Listar</button>
-            </div>
+            <h1 style="text-align: center">Buenas, esta es la lista de todos los participantes que hay</h1>
         </div>
 
         <table class="table table-striped" id="tableList">
@@ -38,13 +31,22 @@
                 <th scope="col">Tipo de Disciplina</th>
                 <th scope="col">Evento</th>
                 <th scope="col">Posicion del evento</th>
+
             </tr>
             </thead>
             <tbody id="body">
 
             </tbody>
         </table>
+
+        <!--<div class="row">
+            <div class="col" style="text-align: center">
+                <button type="button" onclick="reset()" value="Reset" class="btn btn-primary" id="listButton">Listar Nuevamente</button>
+            </div>
+        </div>-->
+
     </div>
+
 </div>
 
 <div class="card m-5">
@@ -54,38 +56,41 @@
     </div>
 
     <div class="m-5">
+        <form id="form3">
+            <div>
+                <h1 style="text-align: center">Buenas, rellene los campos para buscar un afiliado</h1>
+            </div>
+            <div class="col mb-3">
+                <label for="id">Identificación</label>
+                <input type="text" class="form-control" placeholder="Identificación" id="id">
+            </div>
+        </form>
 
-        <div>
-            <h1 style="text-align: center">Buenas, rellene los campos para buscar un afiliado</h1>
+        <div class="row mb-3">
+            <div class="col" style="text-align: center">
+                <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
+            </div>
         </div>
-        <div class="col">
-            <label for="id">Identificación</label>
-            <input type="text" class="form-control" placeholder="Identificación" id="id">
+
+        <div class="row mb-3">
+            <table class="table" id="tabla">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">nombre</th>
+                    <th scope="col">id</th>
+                    <th scope="col">disciplina</th>
+                    <th scope="col">tipo de disciplina</th>
+                    <th scope="col">evento</th>
+                    <th scope="col">posicion del evento</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="row">
-        <div class="col" style="text-align: center">
-            <button type="button" class="btn btn-primary" id="searchButton">Buscar</button>
-        </div>
-    </div>
 
-    <div class="row">
-        <table class="table" id="tabla">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">nombre</th>
-                <th scope="col">id</th>
-                <th scope="col">disciplina</th>
-                <th scope="col">tipo de disciplina</th>
-                <th scope="col">evento</th>
-                <th scope="col">posicion del evento</th>
-            </tr>
-            </thead>
-            <tbody>
-
-
-            </tbody>
-        </table>
     </div>
 </div>
 
@@ -136,7 +141,8 @@
         </form>
 
         <div class="mb-3">
-            <button type="button" class="btn btn-primary" id="addButton">Agregar</button>
+            <button type="button" onclick="reset()" class="btn btn-primary" id="addButton">Agregar
+            </button>
         </div>
 
     </div>
@@ -150,18 +156,22 @@
 
     <div class="m-5">
 
-        <div>
-            <h1 style="text-align: center">Buenas, rellene los campos para eliminar un afiliado</h1>
-        </div>
+        <form id="form2">
+            <div>
+                <h1 style="text-align: center">Buenas, rellene los campos para eliminar un afiliado</h1>
+            </div>
+
+            <div class="mb-3">
+                <label for="deleteId">Identificación</label>
+                <input type="text" class="form-control" placeholder="Identificación" id="deleteId">
+            </div>
+
+        </form>
 
         <div class="mb-3">
-            <label for="deleteId">Identificación</label>
-            <input type="text" class="form-control" placeholder="Identificación" id="deleteId">
+            <button type="button" onclick="reset()" class="btn btn-primary" id="deleteButton">Eliminar</button>
         </div>
 
-        <div class="mb-3">
-            <button type="button" class="btn btn-primary" id="delete">Eliminar</button>
-        </div>
     </div>
 </div>
 
