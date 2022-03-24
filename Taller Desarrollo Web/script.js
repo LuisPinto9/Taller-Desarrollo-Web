@@ -11,83 +11,72 @@ function begin() {
     xhr.send(null)
 
 }
+
 function listButton() {
 
-        const xhr2 = new XMLHttpRequest();
-        xhr2.open('get', 'control.php?option=1', true)
-        xhr2.onreadystatechange = () => {
-            if (xhr2.readyState === 4 && xhr2.status === 200) {
-                const data = JSON.parse(xhr2.response)
-                listData(data)
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open('get', 'control.php?option=1', true)
+    xhr2.onreadystatechange = () => {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
+            const data = JSON.parse(xhr2.response)
+            listData(data)
 
-            }
         }
-        xhr2.send(null)
+    }
+    xhr2.send(null)
 
 }
 
-function reset(){
+function reset() {
 
     let $element = document.getElementById("body")
 
     $element.innerHTML = "";
 }
 
+function reset2() {
+
+    let $element1 = document.getElementById("bodyS")
+
+    $element1.innerHTML = "";
+}
+
 function listData(data) {
 
     data.forEach((participant) => {
         console.log(participant.id)
-        funtionData(participant.name, participant.id, participant.discipline, participant.disciplineType, participant.event, participant.eventPosition)
+        funtionData(participant.discipline, participant.name, participant.id, participant.eventPosition, participant.disciplineType, participant.event)
     })
 }
 
-function funtionData(id, name, surname, position, discipline, mode) {
-    var div = document.getElementById("tableList ");
-    //creando etiqueta para agregar filas (row)
-    var row = document.createElement('tr')
-    // creando etiquetas para agregar columnas (col)
-    var col = document.createElement('td')
-    //agregando la primera columna del indice de filas
+function funtionData(discipline, name, id, position, disciplineType, event) {
+
+    const row = document.createElement('tr');
+    let col = document.createElement('td');
+
     col.appendChild(document.createTextNode(name))
-    //agregamos columna a la fila
     row.appendChild(col)
 
-    //creamos un nuevo espacio de columna
     col = document.createElement('td')
-    //en con esta el numero primo
-    col.appendChild(document.createTextNode(surname))
-    //agregamos columna  a la fila
-    row.appendChild(col)
-
-    //creamos un nuevo espacio de columna
-    col = document.createElement('td')
-    //en con esta el numero primo
     col.appendChild(document.createTextNode(id))
-    //agregamos columna  a la fila
     row.appendChild(col)
 
-
-    //creamos un nuevo espacio de columna
     col = document.createElement('td')
-    //en con esta el numero primo
     col.appendChild(document.createTextNode(discipline))
-    //agregamos columna  a la fila
     row.appendChild(col)
 
 
-    //creamos un nuevo espacio de columna
     col = document.createElement('td')
-    //en con esta el numero primo
-    col.appendChild(document.createTextNode(mode))
-    //agregamos columna  a la fila
+    col.appendChild(document.createTextNode(disciplineType))
     row.appendChild(col)
 
 
-//creamos un nuevo espacio de columna
     col = document.createElement('td')
-//en con esta el numero primo
+    col.appendChild(document.createTextNode(event))
+    row.appendChild(col)
+
+    col = document.createElement('td')
     col.appendChild(document.createTextNode(position))
-//agregamos columna  a la fila
     row.appendChild(col)
 
     body.appendChild(row)
@@ -136,27 +125,26 @@ document.getElementById("deleteButton").addEventListener("click", () => {
 
 document.getElementById("searchButton").addEventListener('click', () => {
 
-    var inicio = document.getElementById('id').value;
+    const initio = document.getElementById('id').value;
 
 
-    var xhr5 = new XMLHttpRequest();
+    const xhr5 = new XMLHttpRequest();
     xhr5.open("GET", "./source/participants.json", true);
 
-    var cont = 0;
+    let cont = 0;
 
     xhr5.onreadystatechange = () => {
         if (xhr5.readyState === 4 && xhr5.status === 200) {
             const data = JSON.parse(xhr5.responseText);
 
             let tabla = document.getElementById('tabla');
-            let cuerpotabla = document.createElement('tbody');
 
-            for (var i = 0; i < data.length; ++i) {
+            for (let i = 0; i < data.length; ++i) {
 
                 let fila = document.createElement('tr');
                 let td = document.createElement('td');
 
-                if (data[i].id === inicio) {
+                if (data[i].id === initio) {
 
                     cont++;
                     td.innerText = data[i].name;
@@ -184,11 +172,11 @@ document.getElementById("searchButton").addEventListener('click', () => {
                     fila.appendChild(td);
 
                 }
-                cuerpotabla.appendChild(fila);
+                bodyS.appendChild(fila);
 
             }
 
-            tabla.appendChild(cuerpotabla);
+            tabla.appendChild(bodyS);
         }
     };
     xhr5.send(null);
