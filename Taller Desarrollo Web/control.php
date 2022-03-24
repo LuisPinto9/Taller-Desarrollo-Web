@@ -13,7 +13,7 @@ if ($option == 1) {
 
     echo json_encode($object);
 
-} elseif ($option == 3) {
+} elseif ($option == 2) {
 
     $newParticipant = array("name" => $_GET['name'], "id" => $_GET['id'], "discipline" => $_GET['discipline'], "disciplineType" => $_GET['disciplineType'], "event" => $_GET['event'], "eventPosition" => $_GET['eventPosition']);
 
@@ -24,7 +24,7 @@ if ($option == 1) {
         file_put_contents('source\participants.json', json_encode($newData));
     }
 
-} elseif ($option == 4) {
+} elseif ($option == 3) {
 
     $idDelete = $_GET["id"];
     $finalData = [];

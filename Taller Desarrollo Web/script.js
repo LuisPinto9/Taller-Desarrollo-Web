@@ -44,7 +44,6 @@ function reset2() {
 function listData(data) {
 
     data.forEach((participant) => {
-        console.log(participant.id)
         funtionData(participant.discipline, participant.name, participant.id, participant.eventPosition, participant.disciplineType, participant.event)
     })
 }
@@ -92,7 +91,7 @@ document.getElementById("addButton").addEventListener("click", () => {
     let eventPosition = document.getElementById("createEventPosition").value
 
     const xhr3 = new XMLHttpRequest();
-    xhr3.open("get", `control.php?option=3&name=${name}&id=${id}&discipline=${discipline}&disciplineType=${disciplineType}&event=${event}&eventPosition=${eventPosition}`, true)
+    xhr3.open("get", `control.php?option=2&name=${name}&id=${id}&discipline=${discipline}&disciplineType=${disciplineType}&event=${event}&eventPosition=${eventPosition}`, true)
     xhr3.onreadystatechange = () => {
         if (xhr3.readyState === 4 && xhr3.status === 200) {
 
@@ -109,9 +108,8 @@ document.getElementById("deleteButton").addEventListener("click", () => {
 
     let id = document.getElementById("deleteId").value
 
-    //let participant = "name=" + name + "&id=" + id + "&discipline=" + discipline + "&disciplineType=" + disciplineType + "&event=" + event + "&eventPosition" + eventPosition
     const xhr4 = new XMLHttpRequest();
-    xhr4.open("get", `control.php?option=4&id=${id}`, true)
+    xhr4.open("get", `control.php?option=3&id=${id}`, true)
     xhr4.onreadystatechange = () => {
         if (xhr4.readyState === 4 && xhr4.status === 200) {
         }
@@ -129,7 +127,7 @@ document.getElementById("searchButton").addEventListener('click', () => {
 
 
     const xhr5 = new XMLHttpRequest();
-    xhr5.open("GET", "./source/participants.json", true);
+    xhr5.open("GET", "control.php?option=1", true);
 
     let cont = 0;
 
