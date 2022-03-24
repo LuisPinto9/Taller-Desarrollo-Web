@@ -6,24 +6,31 @@ function begin() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const data = JSON.parse(xhr.response)
             listData(data)
-
         }
-
     }
     xhr.send(null)
 
-
 }
 
-begin()
+document.getElementById("listButton").addEventListener("click",()=>{
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open('get', 'control.php?option=1', true)
+    xhr2.onreadystatechange = () => {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
+            const data = JSON.parse(xhr2.response)
+            listData(data)
+            document.getElementById("tableList").reset
+        }
+    }
+    xhr2.send(null)
+})
 
-function listData(mesage) {
+function listData(data) {
 
-    mesage.forEach((participant) => {
-        console.log(participant.name)
+    data.forEach((participant) => {
+        console.log(participant.id)
         funtionData(participant.name, participant.id, participant.discipline, participant.disciplineType, participant.event, participant.eventPosition)
     })
-
 }
 
 function funtionData(id, name, surname, position, discipline, mode) {
@@ -87,27 +94,20 @@ document.getElementById("addButton").addEventListener("click", () => {
     let event = document.getElementById("createEvent").value
     let eventPosition = document.getElementById("createEventPosition").value
 
-    //let participant = "name=" + name + "&id=" + id + "&discipline=" + discipline + "&disciplineType=" + disciplineType + "&event=" + event + "&eventPosition" + eventPosition
     const xhr3 = new XMLHttpRequest();
     xhr3.open("get", `control.php?option=3&name=${name}&id=${id}&discipline=${discipline}&disciplineType=${disciplineType}&event=${event}&eventPosition=${eventPosition}`, true)
     xhr3.onreadystatechange = () => {
         if (xhr3.readyState === 4 && xhr3.status === 200) {
 
-            //xhr3.send(participant)
         }
 
     }
     xhr3.send(null)
-    /*$.ajax({
-        url: 'control.php',
-        type: 'POST',
-        data: participant
-    })*/
-    document.getElementById("create").reset();
 
+    document.getElementById("create").reset();
 })
 
-document.getElementById("delete").addEventListener("click",  () => {
+document.getElementById("delete").addEventListener("click", () => {
 
     let id = document.getElementById("deleteId").value
 
@@ -116,7 +116,6 @@ document.getElementById("delete").addEventListener("click",  () => {
     xhr4.open("get", `control.php?option=4&id=${id}`, true)
     xhr4.onreadystatechange = () => {
         if (xhr4.readyState === 4 && xhr4.status === 200) {
-
         }
 
     }
@@ -125,64 +124,53 @@ document.getElementById("delete").addEventListener("click",  () => {
 
 })
 
-document.getElementById("searchButton").addEventListener('click',()=>{
+document.getElementById("searchButton").addEventListener('click', () => {
 
     var inicio = document.getElementById('id').value;
 
 
     var xhr5 = new XMLHttpRequest();
-    xhr5.open("GET","./source/participants.json",true);
+    xhr5.open("GET", "./source/participants.json", true);
 
-    var cont=0;
+    var cont = 0;
 
+    xhr5.onreadystatechange = () => {
+        if (xhr5.readyState === 4 && xhr5.status === 200) {
+            const data = JSON.parse(xhr5.responseText);
 
-
-    // if(genero=="Seleccione Genero..." && actor =="Seleccione Actor..." && director == "Seleccione Director..." ){
-
-    xhr5.onreadystatechange = ()=>{
-        if( xhr5.readyState === 4 && xhr5.status === 200 ){
-            const data = JSON.parse( xhr5.responseText);
-
-            let tabla  = document.getElementById('tabla');
-            let cuerpotabla  = document.createElement('tbody');
+            let tabla = document.getElementById('tabla');
+            let cuerpotabla = document.createElement('tbody');
 
             for (var i = 0; i < data.length; ++i) {
-
-
 
                 let fila = document.createElement('tr');
                 let td = document.createElement('td');
 
-
-
-                if(data[i].id === inicio){
-
-
-                    //if(data[i].year >= inicio && data[i].year <= final){
+                if (data[i].id === inicio) {
 
                     cont++;
                     td.innerText = data[i].name;
                     fila.appendChild(td);
 
                     td = document.createElement('td');
-                    td.innerText= data[i].id;
+                    td.innerText = data[i].id;
                     fila.appendChild(td);
 
                     td = document.createElement('td');
-                    td.innerText= data[i].discipline;
+                    td.innerText = data[i].discipline;
                     fila.appendChild(td);
 
 
                     td = document.createElement('td');
-                    td.innerText= data[i].disciplineType;
+                    td.innerText = data[i].disciplineType;
                     fila.appendChild(td);
 
                     td = document.createElement('td');
-                    td.innerText= data[i].event;
+                    td.innerText = data[i].event;
                     fila.appendChild(td);
 
                     td = document.createElement('td');
-                    td.innerText= data[i].eventPosition;
+                    td.innerText = data[i].eventPosition;
                     fila.appendChild(td);
 
                 }
@@ -194,8 +182,6 @@ document.getElementById("searchButton").addEventListener('click',()=>{
         }
     };
     xhr5.send(null);
-    //   }
-
-
-
 })
+
+begin()
