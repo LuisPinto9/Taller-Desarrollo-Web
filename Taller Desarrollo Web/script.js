@@ -39,7 +39,7 @@ function reset2() {
 
     let $element = document.getElementById("bodyS")
 
-    $element1.innerHTML = "";
+    $element.innerHTML = "";
 }
 
 function reset3() {
