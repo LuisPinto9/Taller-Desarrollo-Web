@@ -1,1 +1,42 @@
-[{"name":"Juan","id":"12312","discipline":"Futbol","disciplineType":"Grupal","event":"Interescuelas","eventPosition":"2"},{"name":"Pablo","id":"345","discipline":"Futbol","disciplineType":"Grupal","event":"Interescuelas","eventPosition":"2"},{"name":"Jose","id":"6786","discipline":"Futbol","disciplineType":"Grupal","event":"Interescuelas","eventPosition":"2"}]
+[
+  {
+    "name": "Juan",
+    "id": "12312",
+    "discipline": "Futbol",
+    "disciplineType": "Grupal",
+    "event": "Interescuelas",
+    "eventPosition": "2"
+  },
+  {
+    "name": "Pablo",
+    "id": "345",
+    "discipline": "Futbol",
+    "disciplineType": "Grupal",
+    "event": "Interescuelas",
+    "eventPosition": "2"
+  },
+  {
+    "name": "Jose",
+    "id": "6786",
+    "discipline": "Futbol",
+    "disciplineType": "Grupal",
+    "event": "Interescuelas",
+    "eventPosition": "2"
+  },
+  {
+    "name": "Manuel",
+    "id": "3453",
+    "discipline": "Natacion",
+    "disciplineType": "Individual",
+    "event": "Olimpicos",
+    "eventPosition": "4"
+  },
+  {
+    "name": "Daniel",
+    "id": "34234",
+    "discipline": "Natacion",
+    "disciplineType": "Individual",
+    "event": "Olimpicos",
+    "eventPosition": "3"
+  }
+]
