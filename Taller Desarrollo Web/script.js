@@ -30,7 +30,7 @@ function listButton() {
 
 function reset() {
 
-    let $element = document.getElementById("body")
+    let $element = document.getElementById("body1")
 
     $element.innerHTML = "";
 }
@@ -51,12 +51,12 @@ function reset3() {
 
 function listData(data) {
 
-    data.forEach((participant) => {
-        funtionData(participant.discipline, participant.name, participant.id, participant.eventPosition, participant.disciplineType, participant.event)
+    data.sort((a,b) => a.name.localeCompare(b.name)).forEach((participant) => {
+        initialTable(participant.discipline, participant.name, participant.id, participant.eventPosition, participant.disciplineType, participant.event)
     })
 }
 
-function funtionData(discipline, name, id, position, disciplineType, event) {
+function initialTable(discipline, name, id, position, disciplineType, event) {
 
     const row = document.createElement('tr');
     let col = document.createElement('td');
@@ -86,7 +86,78 @@ function funtionData(discipline, name, id, position, disciplineType, event) {
     col.appendChild(document.createTextNode(position))
     row.appendChild(col)
 
-    body.appendChild(row)
+    body1.appendChild(row)
+}
+
+document.getElementById("createId").addEventListener("change", (e) => {
+    //let id = document.getElementById("createId").value
+    // aler("entra a comporbar111");
+
+
+    if (comprobarExistencia()===true) {
+        //no esta entrando
+        // alert("ese nombre de ususario ya existe")
+        disableButton(true)
+    }else{
+        disableButton(false)
+    }
+
+
+})
+
+function comprobarExistencia(){
+
+    let estado = false;
+    let id = document.getElementById("createId").value
+    const xhr5 = new XMLHttpRequest();
+    xhr5.open("GET", "control.php?option=1", true);
+
+    xhr5.onreadystatechange = () => {
+        if (xhr5.readyState === 4 && xhr5.status === 200) {
+            const data = JSON.parse(xhr5.responseText);
+            for (let i = 0; i < data.length; ++i) {
+                if (data[i].id === id ) {
+                    // estado = true;
+                    alert("ese nombre de ususario ya existe")
+                    disableButton(true)
+                    return  true ;
+
+
+                }else{
+
+                }
+            }
+        }
+
+    };
+    xhr5.send(null);
+    return false;
+}
+function disableButton(estado) {
+    const button = document.getElementById("addButton")
+    const name = document.getElementById("createName")
+    const disci = document.getElementById("createDiscipline")
+    const tipodis = document.getElementById("createDisciplineType")
+    const event = document.getElementById("createEvent")
+    const posi = document.getElementById("createEventPosition")
+    if (estado === true) {
+        console.log("no activado")
+        button.disabled = true
+        name.disabled = true
+        disci.disabled = true
+        tipodis.disabled = true
+        event.disabled = true
+        posi.disabled = true
+    } else {
+        console.log("activado")
+        button.disabled = false
+        button.disabled = false
+        name.disabled = false
+        disci.disabled = false
+        tipodis.disabled =false
+        event.disabled = false
+        posi.disabled = false
+    }
 }
 
 document.getElementById("addButton").addEventListener("click", () => {
@@ -109,6 +180,7 @@ document.getElementById("addButton").addEventListener("click", () => {
     xhr3.send(null)
 
     document.getElementById("create").reset();
+    reset()
     listButton()
 })
 
@@ -125,6 +197,7 @@ document.getElementById("deleteButton").addEventListener("click", () => {
     }
     xhr4.send(null)
     document.getElementById("form2").reset();
+    reset()
     listButton()
 
 })
@@ -188,6 +261,7 @@ document.getElementById("searchButton").addEventListener('click', () => {
     xhr5.send(null);
 
     document.getElementById("form3").reset()
+    reset2()
 })
 
 function events() {
@@ -267,6 +341,7 @@ document.getElementById("resultsButton").addEventListener("click", () => {
     xhr7.send(null);
 
     document.getElementById("form4").reset()
+    reset3()
 })
 
 function competRepeated(comp, event) {
