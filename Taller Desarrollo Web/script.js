@@ -30,28 +30,28 @@ function listButton() {
 
 function reset() {
 
-    let $element = document.getElementById("body1")
+    const body1 = document.getElementById("body1");
+    body1.innerHTML = "";
 
-    $element.innerHTML = "";
 }
 
 function reset2() {
 
-    let $element = document.getElementById("bodyS")
+    const bodyS = document.getElementById("bodyS")
 
-    $element.innerHTML = "";
+    bodyS.innerHTML = "";
 }
 
 function reset3() {
 
-    let $element = document.getElementById("bodyS1")
+    const bodyS1 = document.getElementById("bodyS1")
 
-    $element.innerHTML = "";
+    bodyS1.innerHTML = "";
 }
 
 function listData(data) {
 
-    data.sort((a,b) => a.name.localeCompare(b.name)).forEach((participant) => {
+    data.sort((a, b) => a.name.localeCompare(b.name)).forEach((participant) => {
         initialTable(participant.discipline, participant.name, participant.id, participant.eventPosition, participant.disciplineType, participant.event)
     })
 }
@@ -89,41 +89,35 @@ function initialTable(discipline, name, id, position, disciplineType, event) {
     body1.appendChild(row)
 }
 
-document.getElementById("createId").addEventListener("change", (e) => {
-    //let id = document.getElementById("createId").value
-    // aler("entra a comporbar111");
+document.getElementById("createId").addEventListener("change", () => {
 
-
-    if (comprobarExistencia()===true) {
-        //no esta entrando
-        // alert("ese nombre de ususario ya existe")
-        disableButton(true)
-    }else{
-        disableButton(false)
-    }
-
-
+    comprobarExistencia();
 })
 
-function comprobarExistencia(){
+document.getElementById("createName").addEventListener("change", () => {
+    comprobarExistencia();
+})
 
-    let estado = false;
+function comprobarExistencia() {
+
     let id = document.getElementById("createId").value
+    let nombre = document.getElementById("createName").value
     const xhr5 = new XMLHttpRequest();
     xhr5.open("GET", "control.php?option=1", true);
-
     xhr5.onreadystatechange = () => {
         if (xhr5.readyState === 4 && xhr5.status === 200) {
             const data = JSON.parse(xhr5.responseText);
             for (let i = 0; i < data.length; ++i) {
-                if (data[i].id === id ) {
-                    // estado = true;
-                    alert("ese nombre de ususario ya existe")
-                    disableButton(true)
-                    return  true ;
 
 
-                }else{
+                if (data[i].name === nombre && data[i].id === id) {
+
+                    disableButton(2)
+
+                } else if (data[i].id === id) {
+
+                    alert("Ese ususario ya existe, debe colocar el mismo nombre")
+                    disableButton(1)
 
                 }
             }
@@ -131,32 +125,34 @@ function comprobarExistencia(){
 
     };
     xhr5.send(null);
-    return false;
 }
+
 function disableButton(estado) {
     const button = document.getElementById("addButton")
-    const name = document.getElementById("createName")
     const disci = document.getElementById("createDiscipline")
     const tipodis = document.getElementById("createDisciplineType")
     const event = document.getElementById("createEvent")
     const posi = document.getElementById("createEventPosition")
-    if (estado === true) {
-        console.log("no activado")
-        button.disabled = true
-        name.disabled = true
-        disci.disabled = true
-        tipodis.disabled = true
-        event.disabled = true
-        posi.disabled = true
-    } else {
-        console.log("activado")
-        button.disabled = false
-        button.disabled = false
-        name.disabled = false
-        disci.disabled = false
-        tipodis.disabled =false
-        event.disabled = false
-        posi.disabled = false
+
+    switch (estado) {
+
+        case 1:
+
+            button.disabled = true
+            disci.disabled = true
+            tipodis.disabled = true
+            event.disabled = true
+            posi.disabled = true
+
+            break;
+        case 2:
+            button.disabled = false
+            button.disabled = false
+            disci.disabled = false
+            tipodis.disabled = false
+            event.disabled = false
+            posi.disabled = false
+            break;
     }
 }
 
@@ -169,43 +165,48 @@ document.getElementById("addButton").addEventListener("click", () => {
     let event = document.getElementById("createEvent").value
     let eventPosition = document.getElementById("createEventPosition").value
 
-    const xhr3 = new XMLHttpRequest();
-    xhr3.open("get", `control.php?option=2&name=${name}&id=${id}&discipline=${discipline}&disciplineType=${disciplineType}&event=${event}&eventPosition=${eventPosition}`, true)
-    xhr3.onreadystatechange = () => {
-        if (xhr3.readyState === 4 && xhr3.status === 200) {
+    if (name === "" && id === "" && discipline === "Seleccione..." && disciplineType === "Seleccione..." && event === "Seleccione..." && eventPosition === "") {
+        alert("Rellene todos los espaios")
+
+    } else {
+        const xhr3 = new XMLHttpRequest();
+        xhr3.open("get", `control.php?option=2&name=${name}&id=${id}&discipline=${discipline}&disciplineType=${disciplineType}&event=${event}&eventPosition=${eventPosition}`, true)
+        xhr3.onreadystatechange = () => {
+            if (xhr3.readyState === 4 && xhr3.status === 200) {
+
+            }
 
         }
+        xhr3.send(null)
+        listButton()
+        document.getElementById("create").reset();
 
     }
-    xhr3.send(null)
-
-    document.getElementById("create").reset();
-    reset()
-    listButton()
 })
 
 document.getElementById("deleteButton").addEventListener("click", () => {
 
     let id = document.getElementById("deleteId").value
+    if (id === "") {
+        alert("Rellene el campo correspondiente")
+    } else {
+        const xhr4 = new XMLHttpRequest();
+        xhr4.open("get", `control.php?option=3&id=${id}`, true)
+        xhr4.onreadystatechange = () => {
+            if (xhr4.readyState === 4 && xhr4.status === 200) {
+            }
 
-    const xhr4 = new XMLHttpRequest();
-    xhr4.open("get", `control.php?option=3&id=${id}`, true)
-    xhr4.onreadystatechange = () => {
-        if (xhr4.readyState === 4 && xhr4.status === 200) {
         }
-
+        xhr4.send(null)
+        listButton()
+        document.getElementById("form2").reset();
     }
-    xhr4.send(null)
-    document.getElementById("form2").reset();
-    reset()
-    listButton()
 
 })
 
 document.getElementById("searchButton").addEventListener('click', () => {
 
     const initio = document.getElementById('id').value;
-
 
     const xhr5 = new XMLHttpRequest();
     xhr5.open("GET", "control.php?option=1", true);
@@ -225,13 +226,13 @@ document.getElementById("searchButton").addEventListener('click', () => {
 
                 if (data[i].id === initio) {
 
-                    cont++;
-                    td.innerText = data[i].name;
-                    fila.appendChild(td);
+                    const name = document.getElementById("labelName")
+                    const id = document.getElementById("labelId")
 
-                    td = document.createElement('td');
-                    td.innerText = data[i].id;
-                    fila.appendChild(td);
+                    name.innerText = data[i].name
+                    id.innerText = data[i].id
+
+                    cont++;
 
                     td = document.createElement('td');
                     td.innerText = data[i].discipline;
@@ -352,6 +353,23 @@ function competRepeated(comp, event) {
         }
     })
     return status
+}
+
+function SoloNumeros(evt) {
+    if (window.event) {
+        keynum = evt.keyCode;
+    } else {
+        keynum = evt.which;
+    }
+
+    if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13) {
+
+        return true;
+    } else {
+        alert("Caracter invalido");
+        return false;
+    }
+
 }
 
 begin()

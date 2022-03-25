@@ -22,7 +22,7 @@
             <h1 style="text-align: center">Buenas, esta es la lista de todos los participantes que hay</h1>
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-striped" >
             <thead>
             <tr>
                 <th scope="col">Nombre</th>
@@ -56,7 +56,8 @@
             </div>
             <div class="col mb-3">
                 <label for="id">Identificación</label>
-                <input type="text" class="form-control" placeholder="Identificación" id="id">
+                <input type="text" class="form-control" placeholder="Identificación"
+                       onkeydown="return SoloNumeros(event);" required id="id">
             </div>
         </form>
 
@@ -67,11 +68,32 @@
         </div>
 
         <div class="row mb-3">
+
+            <div class="text-center d-flex">
+                <div class="col-6">
+                    <h5 class=" m-2" style="text-align: center" id="out1">
+                        Nombre
+                    </h5>
+                </div>
+                <div class="col-6">
+                    <h5 class=" m-2" style=" text-align: center" id="out">
+                        Identificacion
+                    </h5>
+                </div>
+            </div>
+            <div class="text-center d-flex">
+                <div class="col-6">
+                    <label id="labelName"></label>
+                </div>
+                <div class="col-6">
+                    <label id="labelId"></label>
+                </div>
+            </div>
+
+
             <table class="table table-striped" id="tabla">
                 <thead>
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Id</th>
                     <th scope="col">Disciplina</th>
                     <th scope="col">Tipo de disciplina</th>
                     <th scope="col">Evento</th>
@@ -156,12 +178,19 @@
 
             <div class="mb-3">
                 <label for="createId">Identificación</label>
-                <input type="text" class="form-control" placeholder="Identificación" id="createId">
+                <input type="text" class="form-control" placeholder="Identificación"
+                       onkeydown="return SoloNumeros(event);" required id="createId">
             </div>
 
             <div class="mb-3">
                 <label for="createDiscipline">Disciplina</label>
-                <input type="text" class="form-control" placeholder="Disciplina" id="createDiscipline">
+                <select id="createDiscipline" class="form-select">
+                    <option selected>Seleccione...</option>
+                    <option>Futbol</option>
+                    <option>Voleibol</option>
+                    <option>Baloncesto</option>
+                    <option>Natacion</option>
+                </select>
             </div>
 
             <div class="mb-3">
@@ -175,7 +204,12 @@
 
             <div class="mb-3">
                 <label for="createEvent">Eventos</label>
-                <input type="text" class="form-control" placeholder="Nombre del evento" id="createEvent">
+                <select id="createEvent" class="form-select">
+                    <option selected>Seleccione...</option>
+                    <option>Interescuelas</option>
+                    <option>Olimpicos</option>
+                    <option>Nacionales</option>
+                </select>
 
                 <label for="createEventPosition">Posición en la que quedó en el evento</label>
                 <input type="text" class="form-control" placeholder="Posicion" id="createEventPosition">
@@ -183,7 +217,7 @@
         </form>
 
         <div class="mb-3" style="text-align: center">
-            <button type="button" class="btn btn-primary" id="addButton">Agregar
+            <button type="button" class="btn btn-primary" onclick="reset()" id="addButton">Agregar
             </button>
         </div>
 
@@ -205,13 +239,14 @@
 
             <div class="mb-3">
                 <label for="deleteId">Identificación</label>
-                <input type="text" class="form-control" placeholder="Identificación" id="deleteId">
+                <input type="text" class="form-control" placeholder="Identificación"
+                       onkeydown="return SoloNumeros(event);" required id="deleteId">
             </div>
 
         </form>
 
         <div class="mb-3" style="text-align: center">
-            <button type="button" class="btn btn-primary" id="deleteButton">Eliminar</button>
+            <button type="button" class="btn btn-primary" onclick="reset()" id="deleteButton">Eliminar</button>
         </div>
 
     </div>

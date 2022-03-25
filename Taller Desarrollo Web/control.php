@@ -3,13 +3,10 @@
 $option = $_GET['option'];
 
 if ($option == 1) {
-    $file = "./source/participants.json";
-    $fp = fopen($file, "r");
-    $data = fread($fp, filesize($file));
+
+    $data = file_get_contents('source\participants.json');
 
     $object = json_decode($data);
-
-    fclose($fp);
 
     echo json_encode($object);
 
