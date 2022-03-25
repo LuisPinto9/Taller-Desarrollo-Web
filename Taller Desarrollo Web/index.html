@@ -91,6 +91,53 @@
 <div class="card m-5">
 
     <div class="card-header" style="text-align: center">
+        Obtener resultados de los eventos
+    </div>
+
+    <div class="m-5">
+        <form id="form4">
+            <div>
+                <h1 style="text-align: center">Buenas, elija el evento del que quiere saber los resultados</h1>
+            </div>
+            <div class="col mb-3">
+                <label for="events">Evento</label>
+                <select id="events" class="form-select">
+                    <option selected>Seleccione...</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="row mb-3">
+            <div class="col" style="text-align: center">
+                <button type="button" onclick="reset3()" class="btn btn-primary" id="resultsButton">Obtener resultados</button>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <table class="table table-striped" id="tabla1">
+                <thead >
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Disciplina</th>
+                    <th scope="col">Tipo de disciplina</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Posicion del evento</th>
+                </tr>
+                </thead>
+                <tbody id="bodyS1">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div class="card m-5">
+
+    <div class="card-header" style="text-align: center">
         Agregar Participante
     </div>
 

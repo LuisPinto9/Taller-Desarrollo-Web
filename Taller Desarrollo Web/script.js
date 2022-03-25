@@ -6,6 +6,7 @@ function begin() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const data = JSON.parse(xhr.response)
             listData(data)
+            events()
         }
     }
     xhr.send(null)
@@ -36,9 +37,16 @@ function reset() {
 
 function reset2() {
 
-    let $element1 = document.getElementById("bodyS")
+    let $element = document.getElementById("bodyS")
 
     $element1.innerHTML = "";
+}
+
+function reset3() {
+
+    let $element = document.getElementById("bodyS1")
+
+    $element.innerHTML = "";
 }
 
 function listData(data) {
@@ -181,5 +189,94 @@ document.getElementById("searchButton").addEventListener('click', () => {
 
     document.getElementById("form3").reset()
 })
+
+function events() {
+    let events = Array()
+    const xhr6 = new XMLHttpRequest();
+    xhr6.open('get', 'control.php?option=1', true)
+    xhr6.onreadystatechange = () => {
+        if (xhr6.readyState === 4 && xhr6.status === 200) {
+            const data = JSON.parse(xhr6.responseText);
+            data.sort((a, b) => a.name.localeCompare(b.name)).forEach(e => {
+                if (!competRepeated(e, events)) {
+                    document.getElementById("events").add(new Option(e.event))
+                    events.push(e)
+                }
+            })
+        }
+    }
+    xhr6.send(null)
+}
+
+document.getElementById("resultsButton").addEventListener("click", () => {
+    const initio = document.getElementById('events').value;
+
+
+    const xhr7 = new XMLHttpRequest();
+    xhr7.open("GET", "control.php?option=1", true);
+
+    let cont1 = 0;
+
+    xhr7.onreadystatechange = () => {
+        if (xhr7.readyState === 4 && xhr7.status === 200) {
+            const data = JSON.parse(xhr7.responseText);
+            data.sort((a, b) => a.eventPosition.localeCompare(b.eventPosition))
+
+            let tabla = document.getElementById('tabla1');
+
+            for (let i = 0; i < data.length; ++i) {
+
+                let fila1 = document.createElement('tr');
+                let td1 = document.createElement('td');
+
+                if (data[i].event === initio) {
+
+                    cont1++;
+                    td1.innerText = data[i].name;
+                    fila1.appendChild(td1);
+
+                    td1 = document.createElement('td');
+                    td1.innerText = data[i].id;
+                    fila1.appendChild(td1);
+
+                    td1 = document.createElement('td');
+                    td1.innerText = data[i].discipline;
+                    fila1.appendChild(td1);
+
+
+                    td1 = document.createElement('td');
+                    td1.innerText = data[i].disciplineType;
+                    fila1.appendChild(td1);
+
+                    td1 = document.createElement('td');
+                    td1.innerText = data[i].event;
+                    fila1.appendChild(td1);
+
+                    td1 = document.createElement('td');
+                    td1.innerText = data[i].eventPosition;
+                    fila1.appendChild(td1);
+
+                }
+                bodyS1.appendChild(fila1);
+
+            }
+
+            tabla.appendChild(bodyS1);
+        }
+    };
+    xhr7.send(null);
+
+    document.getElementById("form4").reset()
+})
+
+function competRepeated(comp, event) {
+    let status = false
+    event.forEach(e => {
+        if (e.event === comp.event) {
+            status = true
+        }
+    })
+    return status
+}
 
 begin()
