@@ -90,16 +90,18 @@ function initialTable(discipline, name, id, position, disciplineType, event) {
 }
 
 document.getElementById("createId").addEventListener("change", () => {
+    comprobarExistencia()
 
-    comprobarExistencia();
 })
 
 document.getElementById("createName").addEventListener("change", () => {
-    comprobarExistencia();
+    comprobarExistencia()
 })
 
-function comprobarExistencia() {
 
+function comprobarExistencia() {
+    let status = false;
+    let status1 = false;
     let id = document.getElementById("createId").value
     let nombre = document.getElementById("createName").value
     const xhr5 = new XMLHttpRequest();
@@ -107,24 +109,38 @@ function comprobarExistencia() {
     xhr5.onreadystatechange = () => {
         if (xhr5.readyState === 4 && xhr5.status === 200) {
             const data = JSON.parse(xhr5.responseText);
-            for (let i = 0; i < data.length; ++i) {
-
-
-                if (data[i].name === nombre && data[i].id === id) {
-
-                    disableButton(2)
-
-                } else if (data[i].id === id) {
-
+            if (compare(id, data) === false) {
+                status = false
+                disableButton(status)
+            } else if (compare(id, data) === true) {
+                status = true
+                disableButton(status)
+                data.forEach(e => {
+                    if (e.name === nombre) {
+                        status = false
+                        disableButton(status)
+                        status1 = true
+                    }
+                })
+                if(status1 === false){
                     alert("Ese ususario ya existe, debe colocar el mismo nombre")
-                    disableButton(1)
-
                 }
+
             }
         }
 
     };
     xhr5.send(null);
+}
+
+function compare(idC, data) {
+    let status = false
+    data.forEach(e => {
+        if (e.id === idC) {
+            status = true
+        }
+    })
+    return status
 }
 
 function disableButton(estado) {
@@ -136,7 +152,7 @@ function disableButton(estado) {
 
     switch (estado) {
 
-        case 1:
+        case true:
 
             button.disabled = true
             disci.disabled = true
@@ -145,8 +161,7 @@ function disableButton(estado) {
             posi.disabled = true
 
             break;
-        case 2:
-            button.disabled = false
+        case false:
             button.disabled = false
             disci.disabled = false
             tipodis.disabled = false
